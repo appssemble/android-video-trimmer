@@ -34,6 +34,7 @@ import androidx.core.content.ContextCompat;
 import com.akexorcist.localizationactivity.ui.LocalizationActivity;
 import com.arthenica.mobileffmpeg.FFmpeg;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
@@ -339,6 +340,8 @@ public class ActVideoTrimmer extends LocalizationActivity {
                 Glide.with(this)
                         .load(bundle.getString(TrimVideo.TRIM_VIDEO_URI))
                         .apply(options)
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .skipMemoryCache(true)
                         .transition(DrawableTransitionOptions.withCrossFade(300))
                         .into(img);
                 if (sec < totalDuration)
